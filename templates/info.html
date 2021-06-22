@@ -1,0 +1,113 @@
+{% extends "index.html" %}
+{% block mainpage %}
+<section class="info">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" colspan="2" style="text-align: center">Details Obtained</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2" style="text-align: center"><img alt="Profile image" src="https://cdn.discordapp.com/avatars/{{ data['id'] }}/{{  data['avatar'] }}.png"></td>
+    </tr>
+    <tr>
+      <td>Id</td>
+      <td>{{ data["id"] }} </td>
+    </tr>
+    <tr>
+      <td>Username</td>
+      <td>{{ data["username"] }}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{ data["email"] }}</td>
+    </tr>
+      <tr>
+      <td>Language</td>
+      <td>{{ data["locale"] }}</td>
+    </tr>
+
+        <tr>
+      <td>Email Verified</td>
+      <td>
+          {% if data["verified"] %}
+          Yes
+          {% else %}
+          No
+          {% endif %}
+      </td>
+    </tr>
+        <tr>
+      <td>Two factor authentication </td>
+      <td>
+          {% if data["mfa_enabled"] %}
+          Enabled
+          {% else %}
+          Disabled
+          {% endif %}
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</section>
+<br/>
+<br/>
+<br/>
+    <section class="info">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Icon</th>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Owner</th>
+      <th scope="col">Permissions</th>
+      <th scope="col">Features</th>
+
+    </tr>
+  </thead>
+    {% for guild in guilds %}
+
+    <tr>
+        <td > <img height="50" width="50" alt ="icon" src="https://cdn.discordapp.com/icons/{{ guild["id"] }}/{{ guild["icon"] }}.png"></td>
+        <td >{{ guild["id"] }} </td>
+        <td style="width: 100px">{{ guild["name"] }}</td>
+        <td >{{ guild["owner"] }}</td>
+        <td >{{ guild["permissions"] }}</td>
+        <td >
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+
+      Features</button>
+  <div class="dropdown-content">
+    {% for feat in guild["features"] %}
+    <a>{{ feat }}</a>
+    {% endfor %}
+
+  </div>
+</div>
+
+        </td>
+
+    </tr>
+    {% endfor %}
+
+<tfoot>
+<tr>
+    <td colspan="6">
+<p> * None of your data is saved in the database except for access_token. To disable access_token open discord >  settings > Authorised apps and deauthorise "testapp" <br/>
+    * I still havent figured out what to do with the numbers given in permissions so i just labeled the number here. If you do please tell me.<br/>
+    * This website is available at <a href="https://github.com/majidabdulred/discordoauth">Github</a> .</p>
+    </td>
+</tr>
+</tfoot>
+</table>
+</section>
+
+
+{% endblock %}
