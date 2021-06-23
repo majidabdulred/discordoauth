@@ -7,10 +7,10 @@ db = SQLAlchemy(app)
 
 
 class Users(db.Model):
-    email = db.Column(db.String, nullable=True, unique=True, primary_key=True)
-    access_token = db.Column(db.String, nullable=False, unique=True)
-    refresh_token = db.Column(db.String, unique=True, nullable=False)
-    scope = db.Column(db.String, nullable=False)
+    email = db.Column(db.String(20), nullable=True, unique=True, primary_key=True)
+    access_token = db.Column(db.String(31), nullable=False, unique=True)
+    refresh_token = db.Column(db.String(31), unique=True, nullable=False)
+    scope = db.Column(db.String(30), nullable=False)
     exp = db.Column(db.Integer, nullable=False)
 
     def __init__(self, tokens, data):

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, flash, session
+from flask import Flask, render_template, request,  redirect, url_for, flash, session
 import json
 from requests.exceptions import HTTPError
 from dotenv import load_dotenv
@@ -72,8 +72,3 @@ def get_user(email):
         return None
     return json.loads(str(tmp1))
 
-
-if __name__ == '__main__':
-    session.clear()
-
-    app.run(debug=True)

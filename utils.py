@@ -5,7 +5,7 @@ from os import getenv
 
 load_dotenv()
 
-REDIRECT_URI = 'http://localhost:5000/oauth/discord'
+REDIRECT_URI = 'http://abdulmajidred.pythonanywhere.com/oauth/discord'
 
 CLIENT_ID = getenv("CLIENT_ID")
 CLIENT_SECRET = getenv("CLIENT_SECRET")
